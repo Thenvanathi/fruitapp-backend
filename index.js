@@ -1,4 +1,3 @@
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -6,7 +5,8 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS for multiple origins
 const allowedOrigins = [
-  'http://localhost:5173', // Local frontend URL
+  'http://localhost:5173', // Local frontend URL for development
+  'https://fruitapp-frontend.vercel.app' // Your Vercel frontend URL
 ];
 
 app.use(cors({
@@ -37,7 +37,6 @@ app.post("/add", (req, res) => {
   console.log(`Fruit Added: ${name}`);
   console.log("Updated Fruits List:", fruits);
 
-  // Send a success response with the updated fruits list
   res.status(201).json({ message: "Fruit added successfully", fruits });
 });
 
